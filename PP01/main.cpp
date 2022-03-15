@@ -2,62 +2,104 @@
 #include <string>
 
 using namespace std;// namespace 같은 함수 이름 구분 가능 
+bool is_game_running = false; //글로벌 변수_다른 파일에서 접근 가능
 
-class Player //접근자 없을시 private
+class GameObject
 {
-public : 
-    Player() // 생성자
+public :
+    GameObject() 
     {
-        cout << "주인공 생성되었습니다! 아 맑은 공기 아름다운 세상"<< endl; // 메모리 아끼기
+        cout << "게임오브젝트 생성\n";
     }
-    ~Player()// 소멸자
+    virtual ~GameObject()
     {
-        cout << "앗" << endl; //성능 속도가 빠름
+        cout << "게임오브젝트 소멸\n";
     }
-private:
+
+    virtual void Start() // 기본형이 지정되어 있다고 가정
+    {
+        cout << "게임오브젝트 스타트\n";
+
+    }
+    virtual void Update() // 기본형이 지정되어 있다고 가정
+    {
+        cout << "게임오브젝트 업데이트\n";
+
+    }
 };
 
-class Player2//접근자 없을시 private
+class Player : public GameObject
 {
 public:
-    Player2() // 생성자
+    int HP = 100;
+    Player()
     {
-        cout << "주인공2 생성되었습니다! 아 맑은 공기 아름다운 세상" << endl; // 메모리 아끼기
+        cout << "플레이어 생성\n";
     }
-    ~Player2()// 소멸자
+    ~Player()
     {
-        cout << "앗.. 안돼" << endl; //성능 속도가 빠름
+        cout << "플레이어 소멸\n";
     }
-private:
+    void Start()
+    {
+        cout << "플레이어의 HP는" << HP << "입니다\n";
+    }
+    void Update()
+    {
+        cout << "플레이어 업데이트\n";
+    }
 };
 
-class Player3//접근자 없을시 private
+class Enemy : public GameObject
 {
 public:
-    Player3() // 생성자
+    int HP = 100;
+    Enemy()
     {
-        cout << "주인공3 생성되었습니다! 아 맑은 공기 아름다운 세상" << endl; // 메모리 아끼기
+        cout << "적 생성\n";
     }
-    ~Player3()// 소멸자
+    ~Enemy()
     {
-        cout << "앗.. 안돼....." << endl; //성능 속도가 빠름
+        cout << "적 소멸\n";
     }
-private:
+    void Start()
+    {
+        cout << "적의 HP는" << HP <<"입니다\n";
+    }
+    void Update()
+    {
+        cout << "적 업데이트\n";
+    }
 };
-
-void a()
-{
-    Player3 pl3;
-}
 
 int main()
 {   
-    a();
+    static bool is_game_running = true;  // 스태틱 변수_다른 파일에서 접근 불가능
 
-    Player2 pl2; // Player보다 먼저 생성되고 나중에 소멸됨 // 정적 할당 // 스택
-   
-    Player *player = new Player(); //메모리가 만들어졌지만 소멸하지 않음 // 동적 할당 // 소멸시키시기 전까지 소멸 X //힙
-    delete(player); // 소멸 시킴 
+    GameObject* p = new Player();
+    GameObject* e = new Enemy();
+
+
+    p->Start(); // 동적 할당을 하게 되면 화살표 모양으로 표기
+    e->Start();
+    while (is_game_running)
+    {
+        p->Update();
+
+        e->Update();
+        cout << "입력해주세요 (1:게임 종료 , 2:게임 계속): ";
+        int input;
+        cin >> input;
+        if (input == 1)
+            is_game_running = false;
+        else if (input == 2)
+            is_game_running = true;
+        else
+            cout << "다시 입력해주세요\n";
+    };
+
+    delete(p); // 메모리 누수 생김 player가 생성 GameDbject만 제거 
+    delete(e);
 
     return 0;
 }
