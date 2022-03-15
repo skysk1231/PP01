@@ -3,30 +3,40 @@
 
 using namespace std;// 밑에 std 제거 가능
 
-namespace normal //print가 중복되기 때문에 namespace를 지정해서 나눔
+class Player //접근자 없을시 private
 {
-    void print(std::string str)
+public : 
+    Player() // 생성자
     {
-        std::cout << str;
+        cout << "주인공 생성되었습니다! 아 맑은 공기 아름다운 세상"<< endl; // 메모리 아끼기
     }
-}
+    ~Player()// 소멸자
+    {
+        cout << "앗" << endl; //성능 속도가 빠름
+    }
+private:
+};
 
-
-namespace visual_novel //print가 중복되기 때문에 namespace를 지정해서 나눔
+class Player2//접근자 없을시 private
 {
-    void print(std::string str)
+public:
+    Player2() // 생성자
     {
-        std::cout << "이은석 : " << str; // print를 지정해서 사용
+        cout << "주인공2 생성되었습니다! 아 맑은 공기 아름다운 세상" << endl; // 메모리 아끼기
     }
-}
-
-using namespace visual_novel; //28번째 줄에 사용할것이라고 지정
+    ~Player2()// 소멸자
+    {
+        cout << "앗.. 안돼" << endl; //성능 속도가 빠름
+    }
+private:
+};
 
 int main()
-{
-    std::cout << ("평화롭고 아름다운 프로그래밍 패턴 시간\n"); //c++의 기본형
-    normal::print("평화롭고 아름다운 프로그래밍 패턴시간\n"); // namespace의 노말을 가짐
-    visual_novel::print ("평화롭고 아름다운 프로그래밍 패턴시간\n"); // namespace의 visual_novel에서 가지고옴
-    print("평화롭고 아름다운 프로그래밍 패턴시간\n"); // 22줄에서 namespace visual_novel을 사용한다고 지정
+{   
+    Player2 pl2;
+
+    Player *player = new Player(); //메모리가 만들어졌지만 소멸하지 않음
+    delete(player); // 소멸 시킴
+
     return 0;
 }
