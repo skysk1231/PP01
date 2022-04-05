@@ -6,6 +6,8 @@
 
 using namespace std;
 
+//크로노 공부
+
 namespace MuSeoun_Engine
 {
 	class MGameLoop
@@ -45,7 +47,6 @@ namespace MuSeoun_Engine
 		{
 			SetCursorState(false);
 		}
-
 		void Input()
 		{
 			if (GetAsyncKeyState(VK_SPACE) == -0x8000 || GetAsyncKeyState(VK_SPACE) == -0x8001)
@@ -75,25 +76,7 @@ namespace MuSeoun_Engine
 				this_thread::sleep_for(chrono::milliseconds(remainingFrameTime));
 			}
 		}
-		
 		void Release(){}
-
-	private: // 게임 사용 함수
-
-		void MoveCursor(short x, short y)
-		{
-			COORD Position = { x, y };
-			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Position);
-		}
-
-		void SetCursorState(bool visible)
-		{
-			CONSOLE_CURSOR_INFO consoleCursorInfo;
-			consoleCursorInfo.bVisible = visible;
-			consoleCursorInfo.dwSize = 1;
-
-			SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &consoleCursorInfo);
-		}
 	};
 }
 
