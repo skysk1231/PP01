@@ -1,11 +1,29 @@
-
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include "MConsolUtil.hpp"
+#include "MGameLoop.hpp"
 
 class Enemy
 {
 public:
-	int x = 50, y;
+	int x = 50;
+	int y = 7;
+
+	Enemy()
+	{
+		y = 7;
+	}
+	~Enemy()
+	{
+
+	}
+	void EnemyMove()
+	{
+		x--;
+	}
+
+	/*int x = 50, y;
 
 	Enemy()
 	{
@@ -22,6 +40,6 @@ public:
 		{
 			x = 50;
 		}
-	}
+	}*/
 };
 #pragma once
