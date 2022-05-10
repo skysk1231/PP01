@@ -1,0 +1,9 @@
+﻿  Main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.20348.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': 매크로 재정의
+C:\Users\skysk\source\repos\PP01\packages\glfw.3.3.7\build\native\include\GLFW\glfw3.h(123): message : 'APIENTRY'의 이전 정의를 참조하십시오.
+C:\Users\skysk\source\repos\PP01\PP08\Main.cpp(28,28): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\skysk\source\repos\PP01\PP08\Main.cpp(54,20): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\skysk\source\repos\PP01\PP08\Main.cpp(72,27): warning C4305: '-=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\skysk\source\repos\PP01\PP08\Main.cpp(77,24): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\skysk\source\repos\PP01\PP08\Main.cpp(82,27): warning C4305: '-=': 'double'에서 'float'(으)로 잘립니다.
+  PP08.vcxproj -> C:\Users\skysk\source\repos\PP01\x64\Debug\PP08.exe

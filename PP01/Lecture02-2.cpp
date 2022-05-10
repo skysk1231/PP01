@@ -65,7 +65,7 @@ public:
 	}
 	void ChangeGear()
 	{
-		cout << "자동으로 기어를 바꿉니다\n";b 
+		cout << "자동으로 기어를 바꿉니다\n";
 	}
 };
 
